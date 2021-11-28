@@ -1,7 +1,7 @@
 .git
 
 # Node.JS
-dist
+build
 node_modules
 npm-debug.log
 package-lock.json
