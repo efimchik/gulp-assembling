@@ -8,9 +8,11 @@ const app = require('./../config/app.js');
 const plumber = require('gulp-plumber'); //compilation errors plugin
 const notify = require('gulp-notify'); //generates pop-up messages
 
-const imagemin = require('gulp-imagemin'); //Minify PNG, JPEG, GIF and SVG images
 const newer = require('gulp-newer'); //Minify only new image files
 const webp = require('gulp-webp'); //Convert jpeg, jpg and png images to webp format
+
+const imagemin = require('gulp-imagemin'); //Minify JPEG, GIF and SVG images
+const pngquant = require('imagemin-pngquant'); //Minify PNG images
 
 
 
@@ -30,7 +32,20 @@ const img = () => {
 
         .pipe(src(path.img.src))
         .pipe(newer(path.img.dest))
-        .pipe(imagemin(app.imagemin))
+        .pipe(imagemin(
+            [
+                imagemin.mozjpeg({ quality: 75, progressive: true }),
+                pngquant({ quality: [0.7, 0.8], speed: 5 }),
+                imagemin.svgo({
+                    plugins: [
+                        {removeViewBox: true}
+                    ]
+                })
+            ],
+            {
+                verbose: true
+            }
+        ))
         .pipe(dest(path.img.dest))
 }
 

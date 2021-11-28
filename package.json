@@ -52,6 +52,7 @@
     "gulp-webp-css": "^1.1.0",
     "gulp-webp-html": "^1.0.2",
     "gulp-webp-html-nosvg": "^1.0.1",
+    "imagemin-pngquant": "^9.0.2",
     "sass": "^1.43.5",
     "webpack": "^5.64.4",
     "webpack-stream": "^7.0.0"

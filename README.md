@@ -71,6 +71,7 @@ gulp-assembling
 │   ├── clean.js
 │   ├── css.js
 │   ├── html.js
+│   ├── img.js
 │   ├── pug.js
 │   ├── scss.js
 │   ├── stylus.js
@@ -98,10 +99,11 @@ gulp-assembling
     * ```clean.js``` - задача gulp удаляет директорию dist с собраным проектом при каждом запуске
     * ```css.js``` - задача gulp для обработки css файлов
     * ```html.js``` - задача gulp для обработки html файлов
+    * ```html.js``` - задача gulp для обработки img файлов
     * ```pug.js``` - задача gulp для обработки pug файлов
     * ```scss.js``` - задача gulp для обработки scss файлов
     * ```stylus.js``` - задача gulp для обработки stylus файлов
-    * ```webp.js``` - задача gulp для конвертации изображений формата ```jpg``` и ```png``` в формат webp
+    * ```webp.js``` -
 * ```.gitignore``` - файл с исключениями для git
 * ```gulpfile.js``` - подключение и вызов задач gulp
 * ```package.json``` - файл конфигурации gulp
