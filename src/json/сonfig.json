@@ -1,0 +1,17 @@
+{
+    "global": {
+        "lang": "ru",
+        "title": "Страница PUG",
+        "styles": [
+            "./css/main.min.css"
+        ],
+        "scripts": [
+            "./js/main.min.js"
+        ]
+    },
+    "main": {
+        "title": "Главная страница",
+        "description": "Описание главной страницы",
+        "menuIndex": 0
+    }
+}

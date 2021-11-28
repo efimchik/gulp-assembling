@@ -1,0 +1,35 @@
+html {
+    font-size: 62.5%;
+}
+
+html,
+body {
+   height: 100%;
+}
+
+body {
+    min-width: 320px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #cc0000;
+    background: #f4f5f5;
+}
+
+@media(max-width: 767px) {
+    body {
+        background: #000;
+    }
+}
+
+.text {
+    display: inline-flex;
+    justify-content: center;
+}
+
+@media(max-width: 767px) {
+    .text {
+        max-width: 30%;
+    }
+}

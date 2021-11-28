@@ -1,0 +1,23 @@
+.test {
+    text-align: center;
+
+    @media(max-width: 767px) {
+        text-align: left;
+    }
+
+    &__box {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media(max-width: 1200px) {
+            flex-direction: column;
+        }
+
+        @media(max-width: 767px) {
+            flex-direction: row;
+            align-items: flex-end;
+        }
+    }
+}
