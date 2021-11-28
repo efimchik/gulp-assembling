@@ -15,5 +15,15 @@ module.exports = {
     autoprefixer: {
         overrideBrowserslist: ['last 3 versions'],
         cascade: true
+    },
+
+    babel: {
+        presets: [
+            '@babel/preset-env'
+        ]
+    },
+
+    webpack: {
+        mode: 'production'
     }
 }

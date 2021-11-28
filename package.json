@@ -22,11 +22,14 @@
     "url": "https://github.com/efimchik/gulp-assembling/issues"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
     "browser-sync": "^2.27.7",
     "del": "^6.0.0",
     "fs": "0.0.1-security",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
+    "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-cssimport": "^7.0.0",
     "gulp-csso": "^4.0.1",
@@ -41,6 +44,9 @@
     "gulp-shorthand": "^1.1.0",
     "gulp-size": "^4.0.1",
     "gulp-stylus": "^2.7.0",
-    "sass": "^1.43.5"
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.43.5",
+    "webpack": "^5.64.4",
+    "webpack-stream": "^7.0.0"
   }
 }

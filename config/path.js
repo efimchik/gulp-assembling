@@ -32,5 +32,11 @@ module.exports = {
         src: pathSrc + '/pages/styl/*.styl',
         watch: pathSrc + '/**/*.styl',
         dest: pathBuild + '/css'
+    },
+
+    script: {
+        src: pathSrc + '/js/*.js',
+        watch: pathSrc + '/**/*.js',
+        dest: pathBuild + '/js'
     }
 }

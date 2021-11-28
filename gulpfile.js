@@ -12,6 +12,7 @@ const pug = require('./tasks/pug');
 const css = require('./tasks/css');
 const scss = require('./tasks/scss');
 const stylus = require('./tasks/stylus');
+const script = require('./tasks/script');
 
 
 //server
@@ -32,6 +33,7 @@ const watcher = () => {
     watch(path.css.watch, css).on('all', browserSync.reload);
     watch(path.scss.watch, scss).on('all', browserSync.reload);
     watch(path.stylus.watch, stylus).on('all', browserSync.reload);
+    watch(path.script.watch, script).on('all', browserSync.reload);
 }
 
 
@@ -43,9 +45,11 @@ exports.css = css;
 exports.scss = scss;
 exports.stylus = stylus;
 
+exports.script = script;
+
 
 exports.dev = series(
     clear,
-    parallel(html, pug, css, scss, stylus),
+    parallel(html, pug, css, scss, stylus, script),
     parallel(watcher, server)
 );
