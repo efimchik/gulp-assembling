@@ -29,5 +29,9 @@ module.exports = {
 
     webpack: {
         mode: 'production'
+    },
+
+    fonter: {
+        formats: [ 'ttf', 'woff', 'eot', 'svg']
     }
 }

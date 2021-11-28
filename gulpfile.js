@@ -14,6 +14,7 @@ const scss = require('./tasks/scss');
 const stylus = require('./tasks/stylus');
 const script = require('./tasks/script');
 const img = require('./tasks/img');
+const font = require('./tasks/font');
 
 
 //server
@@ -36,6 +37,7 @@ const watcher = () => {
     watch(path.stylus.watch, stylus).on('all', browserSync.reload);
     watch(path.script.watch, script).on('all', browserSync.reload);
     watch(path.img.watch, img).on('all', browserSync.reload);
+    watch(path.font.watch, font).on('all', browserSync.reload);
 }
 
 
@@ -50,10 +52,11 @@ exports.stylus = stylus;
 exports.script = script;
 
 exports.img = img;
+exports.font = font;
 
 
 exports.dev = series(
     clear,
-    parallel(pug, css, scss, stylus, script, img),
+    parallel(pug, css, scss, stylus, script, img, font),
     parallel(watcher, server)
 );
