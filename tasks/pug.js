@@ -10,6 +10,9 @@ const notify = require('gulp-notify'); //generates pop-up messages
 
 const pug2html = require('gulp-pug'); //convert pug files to html
 
+const webp2html = require('gulp-webp-html-nosvg');// Replace <img/> to <picture/> supports webp (no svg format)
+const prettify = require('gulp-html-prettify');//formats the html final file
+
 
 
 
@@ -23,6 +26,8 @@ const pug = () => {
             }))
         }))
         .pipe(pug2html(app.pug))
+        .pipe(webp2html())
+        .pipe(prettify(app.prettify))
         .pipe(dest(path.pug.dest))
 }
 

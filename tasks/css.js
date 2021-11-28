@@ -17,6 +17,7 @@ const mediaqueries = require('gulp-group-css-media-queries'); //grouping of medi
 
 const size = require('gulp-size'); //Display the size of your files
 // const shorthand = require('gulp-shorthand'); //changes css properties to their short record
+const webpcss = require('gulp-webp-css'); //add alternative code for webp format to css file
 
 
 
@@ -32,6 +33,7 @@ const css = () => {
         }))
         .pipe(concat('main.css'))
         .pipe(cssimport())
+        // .pipe(webpcss())
         .pipe(prefixer(app.autoprefixer))
         .pipe(mediaqueries())
         // .pipe(shorthand())

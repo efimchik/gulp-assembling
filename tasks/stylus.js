@@ -13,6 +13,7 @@ const prefixer = require('gulp-autoprefixer'); //add prefix to styles
 const csso = require('gulp-csso'); //minify css
 const rename = require('gulp-rename'); //rename files
 const mediaqueries = require('gulp-group-css-media-queries'); //grouping of media queries
+const webpcss = require('gulp-webp-css'); //add alternative code for webp format to css file
 
 
 
@@ -28,6 +29,7 @@ const stylus = () => {
             }))
         }))
         .pipe(styl())
+        // .pipe(webpcss())
         .pipe(prefixer(app.autoprefixer))
         .pipe(mediaqueries())
         .pipe(rename({suffix: '.min'}))

@@ -4,6 +4,10 @@ const pathBuild = './build';
 module.exports = {
     root: pathBuild,
 
+    jsonConf: {
+        src: pathSrc + '/json/сonfig.json',
+    },
+
     html: {
         src: pathSrc + '/pages/html/*.html',
         watch: pathSrc + '/**/*.html',
@@ -38,5 +42,11 @@ module.exports = {
         src: pathSrc + '/js/*.js',
         watch: pathSrc + '/**/*.js',
         dest: pathBuild + '/js'
+    },
+
+    img: {
+        src: pathSrc + '/img/*.{png,jpg,jpeg,gif,svg}',
+        watch: pathSrc + '/img/**/*.{png,jpg,jpeg,gif,svg}',
+        dest: pathBuild + '/img/'
     }
 }

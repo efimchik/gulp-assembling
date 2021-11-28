@@ -12,6 +12,10 @@ module.exports = {
         }
     },
 
+    prettify: {
+        indent_size: 4
+    },
+
     autoprefixer: {
         overrideBrowserslist: ['last 3 versions'],
         cascade: true
@@ -25,5 +29,9 @@ module.exports = {
 
     webpack: {
         mode: 'production'
+    },
+
+    imagemin: {
+        verbose: true
     }
 }
