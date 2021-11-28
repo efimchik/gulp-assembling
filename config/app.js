@@ -1,12 +1,18 @@
 const fs = require('fs'); //parser json
 
+const isProd = process.argv.includes('--prod');
+const isDev = !isProd;
+
 module.exports = {
+    isProd: isProd,
+    isDev: isDev,
+
     htmlmin: {
-        collapseWhitespace: true
+        collapseWhitespace: isProd //delete spases from html (only prod)
     },
 
     pug: {
-        pretty: true,
+        pretty: isDev, //off minify html in pug
         locals: {
             meta: JSON.parse(fs.readFileSync('./src/json/сonfig.json', 'utf8'))
         }
@@ -28,7 +34,7 @@ module.exports = {
     },
 
     webpack: {
-        mode: 'production'
+        mode: isProd ? 'production' : 'development'
     },
 
     fonter: {

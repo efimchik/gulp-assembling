@@ -3,6 +3,7 @@ const browserSync = require('browser-sync').create(); //server and reload
 
 //add config
 const path = require('./config/path.js');
+const app = require('./config/app.js');
 
 
 //tasks
@@ -40,6 +41,16 @@ const watcher = () => {
     watch(path.font.watch, font).on('all', browserSync.reload);
 }
 
+const build = series(
+    clear,
+    parallel(pug, css, scss, stylus, script, img, font)
+);
+
+const dev = series(
+    build,
+    parallel(watcher, server)
+);
+
 
 //export tascs
 exports.html = html;
@@ -55,8 +66,4 @@ exports.img = img;
 exports.font = font;
 
 
-exports.dev = series(
-    clear,
-    parallel(pug, css, scss, stylus, script, img, font),
-    parallel(watcher, server)
-);
+exports.default = app.isProd ? build : dev;

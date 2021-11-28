@@ -16,7 +16,7 @@ const webpack = require('webpack-stream'); //concat javascript files
 
 //task
 const script = () => {
-    return src(path.script.src, {sourcemaps: true})
+    return src(path.script.src, {sourcemaps: app.isDev})
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
                 title: 'JS',
@@ -25,7 +25,7 @@ const script = () => {
         }))
         .pipe(babel(app.babel))
         .pipe(webpack(app.webpack))
-        .pipe(dest(path.script.dest, {sourcemaps: true}))
+        .pipe(dest(path.script.dest, {sourcemaps: app.isDev}))
 }
 
 

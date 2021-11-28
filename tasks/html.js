@@ -8,6 +8,8 @@ const app = require('./../config/app.js');
 const plumber = require('gulp-plumber'); //compilation errors plugin
 const notify = require('gulp-notify'); //generates pop-up messages
 
+const gulpif = require('gulp-if'); //conditionally control the flow of objects
+
 const htmlinclude = require('gulp-file-include');  //plugin for file includes
 const htmlmin = require('gulp-htmlmin'); //plugin to minify HTML
 
@@ -26,7 +28,7 @@ const html = () => {
         }))
         .pipe(htmlinclude())
         .pipe(webp2html())
-        // .pipe(htmlmin(app.htmlmin))
+        .pipe(gulpif(app.isProd, htmlmin(app.htmlmin)))
         .pipe(dest(path.html.dest))
 }
 

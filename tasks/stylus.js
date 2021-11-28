@@ -8,6 +8,8 @@ const app = require('./../config/app.js');
 const plumber = require('gulp-plumber'); //compilation errors plugin
 const notify = require('gulp-notify'); //generates pop-up messages
 
+const gulpif = require('gulp-if'); //conditionally control the flow of objects
+
 const styl = require('gulp-stylus'); //conver stylus to css
 const prefixer = require('gulp-autoprefixer'); //add prefix to styles
 const csso = require('gulp-csso'); //minify css
@@ -21,7 +23,7 @@ const webpcss = require('gulp-webp-css'); //add alternative code for webp format
 
 //task
 const stylus = () => {
-    return src(path.stylus.src, {sourcemaps: true})
+    return src(path.stylus.src, {sourcemaps: app.isDev})
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
                 title: 'STYLUS',
@@ -33,8 +35,8 @@ const stylus = () => {
         .pipe(prefixer(app.autoprefixer))
         .pipe(mediaqueries())
         .pipe(rename({suffix: '.min'}))
-        // .pipe(csso())
-        .pipe(dest(path.stylus.dest, {sourcemaps: true}))
+        .pipe(gulpif(app.isProd, csso()))
+        .pipe(dest(path.stylus.dest, {sourcemaps: app.isDev}))
 }
 
 

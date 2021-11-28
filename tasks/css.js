@@ -8,6 +8,8 @@ const app = require('./../config/app.js');
 const plumber = require('gulp-plumber'); //compilation errors plugin
 const notify = require('gulp-notify'); //generates pop-up messages
 
+const gulpif = require('gulp-if'); //conditionally control the flow of objects
+
 const concat = require('gulp-concat'); //concat all css files to one
 const cssimport = require('gulp-cssimport'); //change @import css to css code
 const prefixer = require('gulp-autoprefixer'); //add prefix to styles
@@ -24,7 +26,7 @@ const webpcss = require('gulp-webp-css'); //add alternative code for webp format
 
 //task
 const css = () => {
-    return src(path.css.src, {sourcemaps: true})
+    return src(path.css.src, {sourcemaps: app.isDev})
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
                 title: 'CSS',
@@ -38,11 +40,11 @@ const css = () => {
         .pipe(mediaqueries())
         // .pipe(shorthand())
 
-        // .pipe(size({title: 'main.css'}))
+        .pipe(gulpif(app.isProd, size({title: 'main.css'})))
         .pipe(rename({suffix: '.min'}))
-        // .pipe(csso())
-        // .pipe(size({title: 'main.min.css'}))
-        .pipe(dest(path.css.dest, {sourcemaps: true}))
+        .pipe(gulpif(app.isProd, csso()))
+        .pipe(gulpif(app.isProd, size({title: 'main.min.css'})))
+        .pipe(dest(path.css.dest, {sourcemaps: app.isDev}))
 }
 
 

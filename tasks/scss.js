@@ -8,6 +8,8 @@ const app = require('./../config/app.js');
 const plumber = require('gulp-plumber'); //compilation errors plugin
 const notify = require('gulp-notify'); //generates pop-up messages
 
+const gulpif = require('gulp-if'); //conditionally control the flow of objects
+
 const sass = require('gulp-sass')(require('sass')); //compilation scss to css plugin
 const prefixer = require('gulp-autoprefixer'); //add prefix to styles
 const csso = require('gulp-csso'); //minify css
@@ -21,7 +23,7 @@ const webpcss = require('gulp-webp-css'); //add alternative code for webp format
 
 //task
 const scss = () => {
-    return src(path.scss.src, {sourcemaps: true})
+    return src(path.scss.src, {sourcemaps: app.isDev})
         .pipe(plumber({
             errorHandler: notify.onError(error => ({
                 title: 'SCSS',
@@ -33,8 +35,8 @@ const scss = () => {
         .pipe(prefixer(app.autoprefixer))
         .pipe(mediaqueries())
         .pipe(rename({suffix: '.min'}))
-        // .pipe(csso())
-        .pipe(dest(path.scss.dest, {sourcemaps: true}))
+        .pipe(gulpif(app.isProd, csso()))
+        .pipe(dest(path.scss.dest, {sourcemaps: app.isDev}))
 }
 
 

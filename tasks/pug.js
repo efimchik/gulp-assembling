@@ -8,6 +8,8 @@ const app = require('./../config/app.js');
 const plumber = require('gulp-plumber'); //compilation errors plugin
 const notify = require('gulp-notify'); //generates pop-up messages
 
+const gulpif = require('gulp-if'); //conditionally control the flow of objects
+
 const pug2html = require('gulp-pug'); //convert pug files to html
 
 const webp2html = require('gulp-webp-html-nosvg');// Replace <img/> to <picture/> supports webp (no svg format)
@@ -27,7 +29,7 @@ const pug = () => {
         }))
         .pipe(pug2html(app.pug))
         .pipe(webp2html())
-        .pipe(prettify(app.prettify))
+        .pipe(gulpif(app.isDev, prettify(app.prettify)))
         .pipe(dest(path.pug.dest))
 }
 
