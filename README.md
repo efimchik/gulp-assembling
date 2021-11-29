@@ -32,6 +32,8 @@ gulp-assembling
 │   │
 │   ├── tasks
 │   │   ├── clear.js
+│   │   ├── copyCssLibs.js
+│   │   ├── copyJsLibs.js
 │   │   ├── css.js
 │   │   ├── font.js
 │   │   ├── html.js
@@ -108,6 +110,8 @@ gulp-assembling
 
     * ```tasks``` - директория с задачами.
         * ```clean.js``` - задача gulp для удаления папки build перед запуском проекта
+        * ```copyCssLibs.js``` - задача gulp для копирования css файлов сторонних библиотек в проект
+        * ```copyJsLibs.js``` - задача gulp для копирования js файлов сторонних библиотек в проект
         * ```css.js``` - задача gulp для обработки css файлов
         * ```font.js``` - задача gulp для копирования и конвертации файлов шрифтов
         * ```html.js``` - задача gulp для обработки html файлов

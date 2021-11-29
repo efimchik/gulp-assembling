@@ -54,5 +54,17 @@ module.exports = {
         src: pathSrc + '/fonts/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}',
         watch: pathSrc + '/fonts/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}',
         dest: pathBuild + '/fonts/'
+    },
+
+    copyCssLibs: {
+        src: pathSrc + '/libs/css/**/*.css',
+        watch: pathSrc + '/libs/css/**/*.css',
+        dest: pathBuild + '/css/'
+    },
+
+    copyJsLibs: {
+        src: pathSrc + '/libs/js/**/*.js',
+        watch: pathSrc + '/libs/js/**/*.js',
+        dest: pathBuild + '/js/'
     }
 }

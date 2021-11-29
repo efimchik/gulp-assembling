@@ -17,6 +17,9 @@ const script = require('./tasks/script');
 const img = require('./tasks/img');
 const font = require('./tasks/font');
 
+const copyCssLibs = require('./tasks/copyCssLibs');
+const copyJsLibs = require('./tasks/copyJsLibs');
+
 
 //server
 const server = () => {
@@ -40,11 +43,14 @@ const watcher = () => {
     watch(path.script.watch, script).on('all', browserSync.reload);
     watch(path.img.watch, img).on('all', browserSync.reload);
     watch(path.font.watch, font).on('all', browserSync.reload);
+
+    watch(path.copyCssLibs.watch, copyCssLibs).on('all', browserSync.reload);
+    watch(path.copyJsLibs.watch, copyJsLibs).on('all', browserSync.reload);
 }
 
 const build = series(
     clear,
-    parallel(html, pug, css, scss, stylus, script, img, font)
+    parallel(html, pug, css, scss, stylus, script, img, font, copyCssLibs, copyJsLibs)
 );
 
 const dev = series(
@@ -65,6 +71,9 @@ exports.script = script;
 
 exports.img = img;
 exports.font = font;
+
+exports.copyCssLibs = copyCssLibs;
+exports.copyJsLibs = copyJsLibs;
 
 
 exports.default = app.isProd ? build : dev;
