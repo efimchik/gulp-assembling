@@ -10,6 +10,7 @@ const notify = require('gulp-notify'); //generates pop-up messages
 
 const babel = require('gulp-babel'); //javascript handling
 const webpack = require('webpack-stream'); //concat javascript files
+const rename = require('gulp-rename'); //rename files
 
 
 
@@ -25,6 +26,7 @@ const script = () => {
         }))
         .pipe(babel(app.babel))
         .pipe(webpack(app.webpack))
+        .pipe(rename({suffix: '.min'}))
         .pipe(dest(path.script.dest, {sourcemaps: app.isDev}))
 }
 

@@ -1,3 +1,2 @@
-const sum = require('./partials/sum');
-console.log(sum(2, 12));
-console.log(sum(30, 12));
+// const sum = require('./partials/sum');
+// require('./partials/init-accardion');

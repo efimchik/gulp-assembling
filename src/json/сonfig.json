@@ -6,7 +6,7 @@
             "./css/main.min.css"
         ],
         "scripts": [
-            "./js/main.js"
+            "./js/main.min.js"
         ]
     },
     "main": {
