@@ -23,7 +23,8 @@ const server = () => {
     browserSync.init({
         server: {
             baseDir: path.root
-        }
+        },
+        port: 8000
     })
 }
 
@@ -43,7 +44,7 @@ const watcher = () => {
 
 const build = series(
     clear,
-    parallel(pug, css, scss, stylus, script, img, font)
+    parallel(html, pug, css, scss, stylus, script, img, font)
 );
 
 const dev = series(
