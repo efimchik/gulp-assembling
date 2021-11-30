@@ -50,7 +50,9 @@ const watcher = () => {
 
 const build = series(
     clear,
-    parallel(html, pug, css, scss, stylus, script, img, font, copyCssLibs, copyJsLibs)
+    copyCssLibs,
+    copyJsLibs,
+    parallel(html, pug, css, scss, stylus, script, img, font)
 );
 
 const dev = series(
