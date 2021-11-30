@@ -29,7 +29,7 @@ const img = () => {
             }))
         }))
         .pipe(newer(path.img.dest))
-        .pipe(webp())
+        .pipe(webp(app.webp))
         .pipe(dest(path.img.dest))
 
         .pipe(src(path.img.src))

@@ -22,6 +22,11 @@ module.exports = {
         indent_size: 4
     },
 
+    webp: {
+        quality: 70,
+        method: 6
+    },
+
     autoprefixer: {
         overrideBrowserslist: ['last 3 versions'],
         cascade: true
