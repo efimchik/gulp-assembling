@@ -31,6 +31,9 @@ const pug = () => {
         .pipe(webp2html())
         .pipe(gulpif(app.isDev, prettify(app.prettify)))
         .pipe(dest(path.pug.dest))
+
+        .pipe(gulpif(app.isProd, src(path.publicGit.copyHtml)))
+        .pipe(gulpif(app.isProd, dest(path.publicGit.pathPublic)))
 }
 
 

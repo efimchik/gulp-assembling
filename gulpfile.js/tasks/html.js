@@ -30,6 +30,9 @@ const html = () => {
         .pipe(webp2html())
         .pipe(gulpif(app.isProd, htmlmin(app.htmlmin)))
         .pipe(dest(path.html.dest))
+
+        .pipe(gulpif(app.isProd, src(path.publicGit.copyHtml)))
+        .pipe(gulpif(app.isProd, dest(path.publicGit.pathPublic)))
 }
 
 module.exports = html;

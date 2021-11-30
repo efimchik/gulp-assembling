@@ -8,6 +8,8 @@ const app = require('./../config/app.js');
 const plumber = require('gulp-plumber'); //compilation errors plugin
 const notify = require('gulp-notify'); //generates pop-up messages
 
+const gulpif = require('gulp-if'); //conditionally control the flow of objects
+
 const newer = require('gulp-newer'); //Minify only new image files
 const webp = require('gulp-webp'); //Convert jpeg, jpg and png images to webp format
 
@@ -47,6 +49,9 @@ const img = () => {
             }
         ))
         .pipe(dest(path.img.dest))
+
+        .pipe(gulpif(app.isProd, src(path.publicGit.copyImg)))
+        .pipe(gulpif(app.isProd, dest(path.publicGit.pathPublic + '/img')))
 }
 
 

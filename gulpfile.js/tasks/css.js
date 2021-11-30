@@ -45,6 +45,9 @@ const css = () => {
         .pipe(gulpif(app.isProd, csso()))
         .pipe(gulpif(app.isProd, size({title: 'main.min.css'})))
         .pipe(dest(path.css.dest, {sourcemaps: app.isDev}))
+
+        .pipe(gulpif(app.isProd, src(path.publicGit.copyCss)))
+        .pipe(gulpif(app.isProd, dest(path.publicGit.pathPublic + '/css')))
 }
 
 

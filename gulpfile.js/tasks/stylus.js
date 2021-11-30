@@ -37,6 +37,9 @@ const stylus = () => {
         .pipe(rename({suffix: '.min'}))
         .pipe(gulpif(app.isProd, csso()))
         .pipe(dest(path.stylus.dest, {sourcemaps: app.isDev}))
+
+        .pipe(gulpif(app.isProd, src(path.publicGit.copyCss)))
+        .pipe(gulpif(app.isProd, dest(path.publicGit.pathPublic + '/css')))
 }
 
 

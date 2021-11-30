@@ -8,6 +8,8 @@ const app = require('./../config/app.js');
 const plumber = require('gulp-plumber'); //compilation errors plugin
 const notify = require('gulp-notify'); //generates pop-up messages
 
+const gulpif = require('gulp-if'); //conditionally control the flow of objects
+
 const newer = require('gulp-newer'); //Minify only new image files
 //const fonter = require('gulp-fonter'); //Convertation fonts (Windows)
 const fonter = require('gulp-fonter-unx'); //Convertation fonts (Mac)
@@ -31,6 +33,9 @@ const font = () => {
 
         .pipe(ttf2woff2())
         .pipe(dest(path.font.dest))
+
+        .pipe(gulpif(app.isProd, src(path.publicGit.copyFonts)))
+        .pipe(gulpif(app.isProd, dest(path.publicGit.pathPublic + '/fonts')))
 }
 
 
